@@ -1,34 +1,46 @@
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
 int main()
 {
-    int N;
-    int d[100];
+    int n;
+    cin >> n;
+    int y;
+    cin >> y;
 
-    cin >> N;
+    int sum;
+    int flag = 0;
 
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i <= n; i++)
     {
-        cin >> d[i];
-    }
-
-    sort(d, d + N, greater<int>());
-
-    int count = 0;
-    int temp = -1;
-
-    for (int i = 0; i < N; i++)
-    {
-        if (temp != d[i])
+        if ((10000 * i) > y)
         {
-            count++;
-            temp = d[i];
+            break;
+        }
+        for (int j = 0; j <= (n - i); j++)
+        {
+            sum = 10000 * i + 5000 * j + 1000 * (n - i - j);
+            if (sum > y)
+            {
+                break;
+            }
+            else if (sum == y)
+            {
+                flag = 1;
+                cout << i << " " << j << " " << n - i - j << endl;
+                break;
+            }
+        }
+        if (flag == 1)
+        {
+            break;
         }
     }
 
-    cout << count << endl;
+    if (flag == 0)
+    {
+        cout << "-1 -1 -1" << endl;
+    }
 
     return 0;
 }

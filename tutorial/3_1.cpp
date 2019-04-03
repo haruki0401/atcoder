@@ -3,19 +3,33 @@ using namespace std;
 
 int main()
 {
-    char s[3];
+    int num;
+    cin >> num;
 
-    for (int i = 0; i < 3; i++)
+    int n[num];
+    for (int i = 0; i < num; i++)
     {
-        cin >> s[i];
+        cin >> n[i];
     }
 
-    int count = 0;
-    for (int i = 0; i < 3; i++)
+    int handler = 0;
+    int count = -1;
+
+    while (handler == 0)
     {
-        if (s[i] == '1')
+        count++;
+
+        for (int i = 0; i < num; i++)
         {
-            count++;
+            if ((n[i] % 2) == 0)
+            {
+                n[i] = n[i] / 2;
+            }
+            else
+            {
+                handler = 1;
+                break;
+            }
         }
     }
 

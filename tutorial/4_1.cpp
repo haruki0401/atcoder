@@ -3,32 +3,22 @@ using namespace std;
 
 int main()
 {
-    int num;
-    cin >> num;
+    int a, b, c, x;
 
-    int n[num];
-    for (int i = 0; i < num; i++)
+    cin >> a >> b >> c >> x;
+
+    int count = 0;
+
+    for (int i = 0; i <= a; i++)
     {
-        cin >> n[i];
-    }
-
-    int handler = 0;
-    int count = -1;
-
-    while (handler == 0)
-    {
-        count++;
-
-        for (int i = 0; i < num; i++)
+        for (int j = 0; j <= b; j++)
         {
-            if ((n[i] % 2) == 0)
+            for (int k = 0; k <= c; k++)
             {
-                n[i] = n[i] / 2;
-            }
-            else
-            {
-                handler = 1;
-                break;
+                if ((500 * i + 100 * j + 50 * k) == x)
+                {
+                    count++;
+                }
             }
         }
     }

@@ -1,31 +1,39 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int main()
 {
-    int n, a, b;
-    cin >> n >> a >> b;
+    int N;
+    int a[100];
 
-    int full_some = 0;
-
-    for (int i = 0; i <= n; i++)
+    cin >> N;
+    for (int i = 0; i < N; i++)
     {
-        int temp = i;
-        int sum = 0;
-
-        while (temp != 0)
-        {
-            sum += temp % 10;
-            temp = temp / 10;
-        }
-
-        if (sum >= a && sum <= b)
-        {
-            full_some += i;
-        }
+        cin >> a[i];
     }
 
-    cout << full_some << endl;
+    sort(a, a + N, greater<int>());
+
+    int sumx = 0;
+    int sumy = 0;
+
+    int i = 0;
+    while (i < N)
+    {
+        if (i % 2 == 0)
+        {
+            sumx += a[i];
+        }
+        else
+        {
+            sumy += a[i];
+        }
+
+        i++;
+    }
+
+    cout << sumx - sumy << endl;
 
     return 0;
 }

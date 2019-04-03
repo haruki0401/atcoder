@@ -1,51 +1,47 @@
 #include <iostream>
-#include <algorithm>
+#include <cmath>
 using namespace std;
-
-string divide[4] = {"dream", "dreamer", "erase", "eraser"};
 
 int main()
 {
-    string S;
-    cin >> S;
+    int N;
 
-    reverse(S.begin(), S.end());
+    int num = pow(10, 5) + 1;
+    int t[num], x[num], y[num];
 
-    int num = sizeof(divide) / sizeof(divide[0]);
+    cin >> N;
 
-    for (int i = 0; i < num; i++)
+    t[0] = x[0] = y[0] = 0;
+    for (int i = 0; i < N; i++)
     {
-        reverse(divide[i].begin(), divide[i].end());
+        cin >> t[i + 1] >> x[i + 1] >> y[i + 1];
     }
 
     bool can = true;
-    for (int i = 0; i < S.size();)
-    {
-        bool sub_can = false;
-        for (int j = 0; j < num; j++)
-        {
-            if (S.substr(i, divide[j].size()) == divide[j])
-            {
-                sub_can = true;
-                i += divide[j].size();
-                break;
-            }
-        }
 
-        if (!sub_can)
+    for (int i = 0; i < N; i++)
+    {
+        int dt = t[i + 1] - t[i];
+        int dxy = abs(x[i + 1] - x[i]) + abs(y[i + 1] - y[i]);
+
+        if (dt < dxy)
         {
             can = false;
-            break;
+        }
+
+        if ((dt % 2) != (dxy % 2))
+        {
+            can = false;
         }
     }
 
     if (can)
     {
-        cout << "YES" << endl;
+        cout << "Yes" << endl;
     }
     else
     {
-        cout << "NO" << endl;
+        cout << "No" << endl;
     }
 
     return 0;

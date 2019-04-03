@@ -3,27 +3,29 @@ using namespace std;
 
 int main()
 {
-    int a, b, c, x;
+    int n, a, b;
+    cin >> n >> a >> b;
 
-    cin >> a >> b >> c >> x;
+    int full_some = 0;
 
-    int count = 0;
-
-    for (int i = 0; i <= a; i++)
+    for (int i = 0; i <= n; i++)
     {
-        for (int j = 0; j <= b; j++)
+        int temp = i;
+        int sum = 0;
+
+        while (temp != 0)
         {
-            for (int k = 0; k <= c; k++)
-            {
-                if ((500 * i + 100 * j + 50 * k) == x)
-                {
-                    count++;
-                }
-            }
+            sum += temp % 10;
+            temp = temp / 10;
+        }
+
+        if (sum >= a && sum <= b)
+        {
+            full_some += i;
         }
     }
 
-    cout << count << endl;
+    cout << full_some << endl;
 
     return 0;
 }

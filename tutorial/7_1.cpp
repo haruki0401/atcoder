@@ -5,35 +5,30 @@ using namespace std;
 int main()
 {
     int N;
-    int a[100];
+    int d[100];
 
     cin >> N;
+
     for (int i = 0; i < N; i++)
     {
-        cin >> a[i];
+        cin >> d[i];
     }
 
-    sort(a, a + N, greater<int>());
+    sort(d, d + N, greater<int>());
 
-    int sumx = 0;
-    int sumy = 0;
+    int count = 0;
+    int temp = -1;
 
-    int i = 0;
-    while (i < N)
+    for (int i = 0; i < N; i++)
     {
-        if (i % 2 == 0)
+        if (temp != d[i])
         {
-            sumx += a[i];
+            count++;
+            temp = d[i];
         }
-        else
-        {
-            sumy += a[i];
-        }
-
-        i++;
     }
 
-    cout << sumx - sumy << endl;
+    cout << count << endl;
 
     return 0;
 }

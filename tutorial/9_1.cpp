@@ -1,45 +1,51 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
+
+string divide[4] = {"dream", "dreamer", "erase", "eraser"};
 
 int main()
 {
-    int n;
-    cin >> n;
-    int y;
-    cin >> y;
+    string S;
+    cin >> S;
 
-    int sum;
-    int flag = 0;
+    reverse(S.begin(), S.end());
 
-    for (int i = 0; i <= n; i++)
+    int num = sizeof(divide) / sizeof(divide[0]);
+
+    for (int i = 0; i < num; i++)
     {
-        if ((10000 * i) > y)
+        reverse(divide[i].begin(), divide[i].end());
+    }
+
+    bool can = true;
+    for (int i = 0; i < S.size();)
+    {
+        bool sub_can = false;
+        for (int j = 0; j < num; j++)
         {
-            break;
-        }
-        for (int j = 0; j <= (n - i); j++)
-        {
-            sum = 10000 * i + 5000 * j + 1000 * (n - i - j);
-            if (sum > y)
+            if (S.substr(i, divide[j].size()) == divide[j])
             {
-                break;
-            }
-            else if (sum == y)
-            {
-                flag = 1;
-                cout << i << " " << j << " " << n - i - j << endl;
+                sub_can = true;
+                i += divide[j].size();
                 break;
             }
         }
-        if (flag == 1)
+
+        if (!sub_can)
         {
+            can = false;
             break;
         }
     }
 
-    if (flag == 0)
+    if (can)
     {
-        cout << "-1 -1 -1" << endl;
+        cout << "YES" << endl;
+    }
+    else
+    {
+        cout << "NO" << endl;
     }
 
     return 0;

@@ -3,17 +3,23 @@ using namespace std;
 
 int main()
 {
-    int a, b;
-    cin >> a >> b;
+    char s[3];
 
-    if ((a * b) % 2 == 0)
+    for (int i = 0; i < 3; i++)
     {
-        cout << "Even" << endl;
+        cin >> s[i];
     }
-    else
+
+    int count = 0;
+    for (int i = 0; i < 3; i++)
     {
-        cout << "Odd" << endl;
+        if (s[i] == '1')
+        {
+            count++;
+        }
     }
+
+    cout << count << endl;
 
     return 0;
 }

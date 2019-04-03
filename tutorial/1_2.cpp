@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+//can run 1<=a,b<=INT_MAX
+
 int main()
 {
     int a, b;

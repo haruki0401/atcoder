@@ -3,16 +3,17 @@ using namespace std;
 
 int main()
 {
-    int a;
-    cin >> a;
+    int a, b;
+    cin >> a >> b;
 
-    int b, c;
-    cin >> b >> c;
-
-    string s;
-    cin >> s;
-
-    cout << (a + b + c) << " " << s << endl;
+    if ((a * b) % 2 == 0)
+    {
+        cout << "Even" << endl;
+    }
+    else
+    {
+        cout << "Odd" << endl;
+    }
 
     return 0;
 }

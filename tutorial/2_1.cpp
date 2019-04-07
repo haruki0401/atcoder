@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+//also can use String instead of char[]
+
 int main()
 {
     char s[3];
